@@ -142,7 +142,3 @@ Please keep the codebase **comment‑free** unless a comment provides essential 
 
 ## License
 This project is released under the **MIT License** – you are free to use, modify, and distribute it, provided you retain the license notice.
-
----
-
-*Feel free to edit any section to match your workflow or add additional documentation (deployment instructions, design guidelines, changelog, etc.). Happy coding!*
