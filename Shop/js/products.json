@@ -1,0 +1,236 @@
+[
+  {
+    "id": 1,
+    "title": "SAMSUNG Galaxy S26 Ultra",
+    "price": 1199.99,
+    "oldPrice": 1499.99,
+    "category": "mobiles-tablets",
+    "categoryName": "Mobiles & Tablets",
+    "rating": 5,
+    "reviewsCount": 42,
+    "image": "img/SamsungS26Ultra.png",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "specification": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "inStock": true,
+    "specs": {
+      "color": "Titanium Gray",
+      "brand": "Samsung"
+    }
+  },
+  {
+    "id": 2,
+    "title": "APPLE AirPods Max 2",
+    "price": 499.00,
+    "oldPrice": 549.00,
+    "category": "audio-video",
+    "categoryName": "Audio & Video",
+    "rating": 5,
+    "reviewsCount": 88,
+    "image": "img/APPLEAirPodsMax2.png",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "specification": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "inStock": true,
+    "specs": {
+      "color": "Space Gray",
+      "brand": "Apple"
+    }
+  },
+  {
+    "id": 3,
+    "title": "Apple iPad Pro 2025",
+    "price": 999.99,
+    "oldPrice": 1299.99,
+    "category": "mobiles-tablets",
+    "categoryName": "Mobiles & Tablets",
+    "rating": 5,
+    "reviewsCount": 64,
+    "image": "img/iPadPro.png",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "specification": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "inStock": true,
+    "specs": {
+      "color": "Silver",
+      "brand": "Apple"
+    }
+  },
+  {
+    "id": 4,
+    "title": "Mackbook Pro M4",
+    "price": 600.00,
+    "oldPrice": 699.00,
+    "category": "computers-laptops",
+    "categoryName": "Computers & Laptops",
+    "rating": 5,
+    "reviewsCount": 150,
+    "image": "img/macbookairm4.png",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "specification": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "inStock": true,
+    "specs": {
+      "color": "Space Black",
+      "brand": "Apple"
+    }
+  },
+  {
+    "id": 5,
+    "title": "Xbox One Wireless Controller",
+    "price": 35.00,
+    "oldPrice": 54.00,
+    "category": "games-videos",
+    "categoryName": "Games & Videos",
+    "rating": 4,
+    "reviewsCount": 95,
+    "image": "img/xbox1.png",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "specification": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "inStock": true,
+    "specs": {
+      "color": "Robot White",
+      "brand": "Microsoft"
+    }
+  },
+  {
+    "id": 6,
+    "title": "Sony DualSense Wireless Controller",
+    "price": 60.00,
+    "oldPrice": 75.00,
+    "category": "games-videos",
+    "categoryName": "Games & Videos",
+    "rating": 5,
+    "reviewsCount": 128,
+    "image": "img/dualsense.png",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "specification": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "inStock": true,
+    "specs": {
+      "color": "White",
+      "brand": "Sony"
+    }
+  },
+  {
+    "id": 7,
+    "title": "iPhone 16 Pro Max",
+    "price": 600.00,
+    "oldPrice": 898.00,
+    "category": "mobiles-tablets",
+    "categoryName": "Mobiles & Tablets",
+    "rating": 5,
+    "reviewsCount": 340,
+    "image": "img/iphone16promax.png",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "specification": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "inStock": true,
+    "specs": {
+      "color": "Black Titanium",
+      "brand": "Apple"
+    }
+  },
+  {
+    "id": 8,
+    "title": "Portable Electric Grinder Maker",
+    "price": 75.00,
+    "oldPrice": null,
+    "category": "home-appliances",
+    "categoryName": "Home Appliances",
+    "rating": 4,
+    "reviewsCount": 18,
+    "image": "img/blender.png",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "specification": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "inStock": true,
+    "specs": {
+      "color": "Black",
+      "brand": "Generic"
+    }
+  },
+  {
+    "id": 9,
+    "title": "iPhone 13 Pro",
+    "price": 450.00,
+    "oldPrice": 699.00,
+    "category": "mobiles-tablets",
+    "categoryName": "Mobiles & Tablets",
+    "rating": 4,
+    "reviewsCount": 512,
+    "image": "img/iphone.png",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "specification": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "inStock": true,
+    "specs": {
+      "color": "Sierra Blue",
+      "brand": "Apple"
+    }
+  },
+  {
+    "id": 10,
+    "title": "Foldable Motorised Treadmill",
+    "price": 399.00,
+    "oldPrice": 499.00,
+    "category": "sports-fitness",
+    "categoryName": "Sports & Fitness",
+    "rating": 4,
+    "reviewsCount": 27,
+    "image": "img/treadmill.png",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "specification": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "inStock": false,
+    "specs": {
+      "color": "Black",
+      "brand": "FitPro"
+    }
+  },
+  {
+    "id": 11,
+    "title": "Apple Watch Ultra",
+    "price": 80.00,
+    "oldPrice": 99.00,
+    "category": "smartwatches",
+    "categoryName": "Smartwatches",
+    "rating": 5,
+    "reviewsCount": 230,
+    "image": "img/AppleWatchUltra.png",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "specification": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "inStock": true,
+    "specs": {
+      "color": "Titanium",
+      "brand": "Apple"
+    }
+  },
+  {
+    "id": 12,
+    "title": "Logitech G304 LIGHTSPEED",
+    "price": 40.00,
+    "oldPrice": 65.00,
+    "category": "computers-laptops",
+    "categoryName": "Computers & Laptops",
+    "rating": 5,
+    "reviewsCount": 410,
+    "image": "img/LogitechG304.png",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "specification": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "inStock": true,
+    "specs": {
+      "color": "Black",
+      "brand": "Logitech"
+    }
+  },
+  {
+    "id": 13,
+    "title": "Rangs 43 Inch Frameless FHD Double Glass Android TV",
+    "price": 700.00,
+    "oldPrice": 799.00,
+    "category": "audio-video",
+    "categoryName": "Audio & Video",
+    "rating": 4,
+    "reviewsCount": 76,
+    "image": "img/TV.png",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "specification": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "inStock": true,
+    "specs": {
+      "color": "Black",
+      "brand": "Rangs"
+    }
+  }
+]

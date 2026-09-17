@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | $haBuy Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <script src="js/cart.js" defer></script>
+    <script src="js/checkout.js" defer></script>
+    <script src="js/wishlist.js" defer></script>
+
+    <style>
+        .checkout-page-section {
+            max-width: 1370px;
+            width: 100%;
+            margin: 120px auto;
+            box-sizing: border-box;
+        }
+
+        .checkout-header-top {
+            margin-bottom: 24px;
+        }
+
+        .checkout-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #1a202c;
+            margin: 0 0 8px 0;
+        }
+
+        .checkout-subtitle {
+            font-size: 14px;
+            color: #718096;
+            margin: 0;
+        }
+
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 28px;
+            align-items: start;
+        }
+
+        .checkout-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            margin-bottom: 24px;
+        }
+
+        .card-header-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a202c;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #edf2f7;
+            margin: 0 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-step-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background-color: #437fee;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .form-row .form-group {
+            margin-bottom: 0;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #4a5568;
+        }
+
+        .form-group .required {
+            color: #e53e3e;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #2d3748;
+            outline: none;
+            background-color: #ffffff;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group input.input-error,
+        .form-group select.input-error {
+            border-color: #e53e3e;
+            background-color: #fffaf0;
+        }
+
+        .form-group input.input-valid,
+        .form-group select.input-valid {
+            border-color: #38a169;
+        }
+
+        .field-error-msg {
+            font-size: 12px;
+            color: #e53e3e;
+            display: none;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        .payment-options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .payment-option-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .payment-option-label:hover {
+            border-color: #cbd5e1;
+            background-color: #f8fafc;
+        }
+
+        .payment-option-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .payment-option-label input[type="radio"] {
+            accent-color: #437fee;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .payment-option-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .payment-icons {
+            display: flex;
+            gap: 6px;
+        }
+
+        .payment-icons img {
+            height: 20px;
+            object-fit: contain;
+        }
+
+        .credit-card-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 16px;
+        }
+
+        .summary-card-sticky {
+            position: sticky;
+            top: 100px;
+        }
+
+        .checkout-items-list {
+            max-height: 280px;
+            overflow-y: auto;
+            padding-right: 6px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .checkout-item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .checkout-item-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .checkout-item-img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            background: #f8fafc;
+            border-radius: 6px;
+            padding: 4px;
+            border: 1px solid #edf2f7;
+            flex-shrink: 0;
+        }
+
+        .checkout-item-details {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .checkout-item-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: #2d3748;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .checkout-item-qty {
+            font-size: 12px;
+            color: #718096;
+            margin-top: 2px;
+        }
+
+        .checkout-item-total {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a202c;
+            flex-shrink: 0;
+        }
+
+        .cost-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 14px;
+            color: #4a5568;
+        }
+
+        .cost-row.free-badge strong {
+            color: #38a169;
+        }
+
+        .cost-total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            margin-top: 12px;
+            border-top: 2px solid #edf2f7;
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a202c;
+        }
+
+        .place-order-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background-color: #437fee;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 0;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 24px;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .place-order-btn:hover:not(:disabled) {
+            background-color: #2e5aaa;
+        }
+
+        .place-order-btn:disabled {
+            background-color: #a0aec0;
+            cursor: not-allowed;
+        }
+
+        .trust-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid #edf2f7;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            color: #718096;
+        }
+
+        .trust-item svg {
+            color: #437fee;
+            flex-shrink: 0;
+        }
+
+        .checkout-empty-wrapper {
+            background: #ffffff;
+            border-radius: 12px;
+            text-align: center;
+            padding: 80px 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .empty-icon-circle {
+            width: 70px;
+            height: 70px;
+            background: #edf2f7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            color: #a0aec0;
+        }
+
+        .empty-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .empty-desc {
+            font-size: 14px;
+            color: #718096;
+            margin-bottom: 24px;
+        }
+
+        .btn-return-shop {
+            display: inline-block;
+            background-color: #193468;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 15px;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-return-shop:hover {
+            background-color: #162e5a;
+        }
+
+        .success-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 100000;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .success-modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .success-modal-content {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 40px 32px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .success-modal-overlay.open .success-modal-content {
+            transform: scale(1);
+        }
+
+        .success-icon-wrap {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background-color: #ecfdf5;
+            color: #10b981;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .success-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a202c;
+            margin: 0 0 8px 0;
+        }
+
+        .success-subtitle {
+            font-size: 14px;
+            color: #718096;
+            margin: 0 0 24px 0;
+            line-height: 1.5;
+        }
+
+        .order-details-box {
+            background-color: #f8fafc;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        .order-details-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            color: #4a5568;
+        }
+
+        .order-details-row strong {
+            color: #1a202c;
+        }
+
+        .btn-continue-shop {
+            display: block;
+            width: 100%;
+            background-color: #437fee;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 0;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-continue-shop:hover {
+            background-color: #2e5aaa;
+        }
+
+        .checkout-spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ffffff;
+            border-top-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 968px) {
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+            .summary-card-sticky {
+                position: static;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .checkout-card {
+                padding: 20px 16px;
+            }
+        }
+    </style>
+    <script src="js/common.js" defer></script>
+</head>
+<body>
+    <div class="backgroundP">
+        <header class="site-header">
+            <div class="container">
+                <div class="logo-container">
+                    <a href="index.html">
+                        <img src="img/icon.png" alt="icon" class="logo">
+                    </a>
+                </div>
+
+                <nav class="main-nav">
+                    <ul class="main-ul">
+                        <li><a href="popular.html">Popular</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-link">Pages<img src="img/icons/arr-down.svg" alt="" class="menu-arrow"></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="cart.html">Cart</a></li>
+                                <li><a href="wishlist.html">Wishlist</a></li>
+                                <li><a href="404.html">Error</a></li>
+                                <li><a href="mailsuccess.html">Mail Success</a></li>
+                                <li><a href="privacypolicy.html">Privacy Policy</a></li>
+                                <li><a href="terms.html">Terms & Conditions</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="action-btn">
+                        <img src="img/icons/search.svg" alt="search">
+                    </button>
+
+                    <button class="action-btn">
+                        <img src="img/icons/user.svg" alt="user">
+                    </button>
+
+                    <button class="action-btn badge-wrapper" onclick="window.location.href='wishlist.html'">
+                        <img src="img/icons/favorite.svg" alt="favorites">
+                        <span class="counter-badge" id="wishlist-badge">0</span>
+                    </button>
+
+                    <button class="action-btn badge-wrapper" id="cart-icon-btn">
+                        <img src="img/icons/cart.svg" alt="cart">
+                        <span class="counter-badge" id="cart-badge">0</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="checkout-page-section">
+            <div class="checkout-header-top">
+                <h1 class="checkout-title">Checkout</h1>
+                <p class="checkout-subtitle">Please fill in your details below to complete your order.</p>
+            </div>
+
+            <div id="checkout-empty-state" class="checkout-empty-wrapper" style="display: none;">
+                <div class="empty-icon-circle">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                </div>
+                <h2 class="empty-title">Your Cart is Empty</h2>
+                <p class="empty-desc">You don't have any items in your cart to checkout yet.</p>
+                <a href="shop.html" class="btn-return-shop">Return to Shop</a>
+            </div>
+
+            <form id="checkout-form" novalidate>
+                <div id="checkout-grid" class="checkout-grid">
+                    <div class="checkout-left-col">
+                        
+                        <div class="checkout-card">
+                            <h2 class="card-header-title">
+                                <span class="card-step-badge">1</span>
+                                Billing & Shipping Information
+                            </h2>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name">First Name <span class="required">*</span></label>
+                                    <input type="text" id="first-name" placeholder="John" autocomplete="given-name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="last-name">Last Name <span class="required">*</span></label>
+                                    <input type="text" id="last-name" placeholder="Doe" autocomplete="family-name">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address <span class="required">*</span></label>
+                                    <input type="email" id="email" placeholder="john.doe@example.com" autocomplete="email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number <span class="required">*</span></label>
+                                    <input type="tel" id="phone" placeholder="+1 (555) 000-1234" autocomplete="tel">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="country">Country / Region <span class="required">*</span></label>
+                                <select id="country" autocomplete="country">
+                                    <option value="">Select a country...</option>
+                                    <option value="US">United States (US)</option>
+                                    <option value="CA">Canada (CA)</option>
+                                    <option value="GB">United Kingdom (UK)</option>
+                                    <option value="DE">Germany (DE)</option>
+                                    <option value="FR">France (FR)</option>
+                                    <option value="AU">Australia (AU)</option>
+                                    <option value="PL">Poland (PL)</option>
+                                    <option value="UA">Ukraine (UA)</option>
+                                    <option value="ES">Spain (ES)</option>
+                                    <option value="IT">Italy (IT)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address">Street Address <span class="required">*</span></label>
+                                <input type="text" id="address" placeholder="123 Main St" autocomplete="street-address">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="apartment">Apartment, suite, unit (optional)</label>
+                                <input type="text" id="apartment" placeholder="Apt 4B">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">Town / City <span class="required">*</span></label>
+                                    <input type="text" id="city" placeholder="New York" autocomplete="address-level2">
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State / Province <span class="required">*</span></label>
+                                    <input type="text" id="state" placeholder="NY" autocomplete="address-level1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="zip">Postal / ZIP Code <span class="required">*</span></label>
+                                    <input type="text" id="zip" placeholder="10001" autocomplete="postal-code">
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label for="order-notes">Order Notes (optional)</label>
+                                <textarea id="order-notes" rows="3" placeholder="Notes about your order, e.g. special delivery instructions."></textarea>
+                            </div>
+                        </div>
+
+                        
+                        <div class="checkout-card">
+                            <h2 class="card-header-title">
+                                <span class="card-step-badge">2</span>
+                                Payment Method
+                            </h2>
+
+                            <div class="payment-options-list">
+                                <label class="payment-option-label">
+                                    <div class="payment-option-left">
+                                        <input type="radio" name="payment-method" value="card" checked>
+                                        <span class="payment-option-name">Credit or Debit Card</span>
+                                    </div>
+                                    <div class="payment-icons">
+                                        <img src="img/icons/visa.svg" alt="Visa">
+                                        <img src="img/icons/mastercard.svg" alt="Mastercard">
+                                    </div>
+                                </label>
+
+                                <label class="payment-option-label">
+                                    <div class="payment-option-left">
+                                        <input type="radio" name="payment-method" value="paypal">
+                                        <span class="payment-option-name">PayPal</span>
+                                    </div>
+                                    <div class="payment-icons">
+                                        <img src="img/icons/paypal.svg" alt="PayPal">
+                                    </div>
+                                </label>
+
+                                <label class="payment-option-label">
+                                    <div class="payment-option-left">
+                                        <input type="radio" name="payment-method" value="cod">
+                                        <span class="payment-option-name">Cash on Delivery</span>
+                                    </div>
+                                </label>
+                            </div>
+
+                            
+                            <div id="credit-card-fields" class="credit-card-box">
+                                <div class="form-group">
+                                    <label for="card-name">Name on Card <span class="required">*</span></label>
+                                    <input type="text" id="card-name" placeholder="John Doe" autocomplete="cc-name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="card-number">Card Number <span class="required">*</span></label>
+                                    <input type="text" id="card-number" placeholder="4111 2222 3333 4444" maxlength="23" autocomplete="cc-number">
+                                </div>
+
+                                <div class="form-row" style="margin-bottom: 0;">
+                                    <div class="form-group">
+                                        <label for="card-expiry">Expiry Date <span class="required">*</span></label>
+                                        <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" autocomplete="cc-exp">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="card-cvv">Security Code (CVV) <span class="required">*</span></label>
+                                        <input type="password" id="card-cvv" placeholder="123" maxlength="4" autocomplete="cc-csc">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="checkout-right-col">
+                        <div class="checkout-card summary-card-sticky">
+                            <h2 class="card-header-title">Order Summary</h2>
+
+                            <div id="checkout-items-list" class="checkout-items-list">
+                                
+                            </div>
+
+                            <div class="cost-row">
+                                <span>Subtotal</span>
+                                <strong id="checkout-subtotal">$0.00</strong>
+                            </div>
+
+                            <div class="cost-row free-badge">
+                                <span>Shipping</span>
+                                <strong>Free</strong>
+                            </div>
+
+                            <div class="cost-total-row">
+                                <span>Total</span>
+                                <strong id="checkout-total-price">$0.00</strong>
+                            </div>
+
+                            <button type="submit" id="place-order-btn" class="place-order-btn">
+                                Place Order
+                            </button>
+
+                            <div class="trust-badges">
+                                <div class="trust-item">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                    </svg>
+                                    <span>256-Bit SSL Encrypted & Secure Checkout</span>
+                                </div>
+                                <div class="trust-item">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    </svg>
+                                    <span>30-Day Money-Back Guarantee</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    
+    <div id="order-success-modal" class="success-modal-overlay">
+        <div class="success-modal-content">
+            <div class="success-icon-wrap">
+                <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <h2 class="success-title">Order Confirmed!</h2>
+            <p class="success-subtitle">Thank you for your purchase. We have received your order and are preparing it for shipment.</p>
+
+            <div class="order-details-box">
+                <div class="order-details-row">
+                    <span>Order Number:</span>
+                    <strong id="success-order-number">#SHABUY-000000</strong>
+                </div>
+                <div class="order-details-row">
+                    <span>Recipient:</span>
+                    <strong id="success-customer-name">Customer</strong>
+                </div>
+                <div class="order-details-row">
+                    <span>Confirmation Sent To:</span>
+                    <strong id="success-customer-email">email@example.com</strong>
+                </div>
+                <div class="order-details-row">
+                    <span>Total Paid:</span>
+                    <strong id="success-order-total">$0.00</strong>
+                </div>
+            </div>
+
+            <a href="shop.html" class="btn-continue-shop">Continue Shopping</a>
+        </div>
+    </div>
+
+    
+    <div id="cart-modal" class="cart-modal-overlay">
+        <div class="cart-modal-content">
+            <div class="cart-header">
+                <h2>Cart View</h2>
+                <button id="close-cart-btn" class="close-btn">&times;</button>
+            </div>
+            <ul id="cart-items-list" class="cart-items-list"></ul>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Subtotal:</span>
+                    <strong id="cart-total-price">$0</strong>
+                </div>
+                <div class="cart-actions-btns">
+                    <a href="cart.html" class="btn-view-cart">View Cart</a>
+                    <a href="checkout.html" class="btn-checkout">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="footer-col">
+                <h3 class="col-title">Help & Support</h3>
+                <ul class="contact-list">
+                    <li>
+                        <img src="img/icons/location.svg" alt="location" class="contact-icon">
+                        <span>742 Maplewood Drive, Springfield, IL 62704, USA</span>
+                    </li>
+                    <li>
+                        <img src="img/icons/phone.svg" alt="phone" class="contact-icon">
+                        <span>+1 (212) 555-0187</span>
+                    </li>
+                    <li>
+                        <img src="img/icons/mail.svg" alt="email" class="contact-icon">
+                        <span>support@example.com</span>
+                    </li>
+                </ul>
+
+                <div class="social-links">
+                    <a href="#" class="social-btn"><img src="img/icons/facebook.svg" alt="facebook"></a>
+                    <a href="#" class="social-btn"><img src="img/icons/instagram.svg" alt="instagram"></a>
+                    <a href="#" class="social-btn"><img src="img/icons/twitter.svg" alt="twitter"></a>
+                    <a href="#" class="social-btn"><img src="img/icons/whatsapp.svg" alt="whatsapp"></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="col-title">Account</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Login / Register</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="wishlist.html">Wishlist</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="col-title">Quick Link</h3>
+                <ul class="footer-links">
+                    <li><a href="privacypolicy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Refund Policy</a></li>
+                    <li><a href="terms.html">Terms of Use</a></li>
+                    <li><a href="#">FAQ's</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="col-title">Download App</h3>
+                <p class="app-desc">Get started in seconds – it's fast, free, and easy!</p>
+
+                <div class="app-buttons">
+                    <a href="#" class="app-btn">
+                        <img src="img/icons/apple.svg" alt="App Store" class="app-icon">
+                        <div>
+                            <small>Download on the</small>
+                            <strong>App Store</strong>
+                        </div>
+                    </a>
+
+                    <a href="#" class="app-btn">
+                        <img src="img/icons/google-play.svg" alt="Google Play" class="app-icon">
+                        <div>
+                            <small>Get it On</small>
+                            <strong>Google Play</strong>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>© 2026. All rights reserved</p>
+                <div class="payment-methods">
+                    <span>We Accept:</span>
+                    <img src="img/icons/visa.svg" alt="visa">
+                    <img src="img/icons/paypal.svg" alt="paypal">
+                    <img src="img/icons/mastercard.svg" alt="mastercard">
+                    <img src="img/icons/apple-pay.svg" alt="apple pay">
+                    <img src="img/icons/google-pay.svg" alt="google pay">
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

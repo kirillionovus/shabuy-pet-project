@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Popular Page | $haBuy Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <script src="js/popular.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/wishlist.js" defer></script>
+</head>
+<body>
+    <div class="backgroundP">
+        <header class="site-header">
+            <div class="container">
+            <div class="logo-container">
+                <a href="#">
+                    <img src="img/icon.png" alt="icon" class="logo" onclick="window.location.href='index.html';">
+                </a>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="main-ul">
+                    <li><a href="popular.html">Popular</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-link">Pages<img src="img/icons/arr-down.svg" alt="" class="menu-arrow"></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="cart.html">Cart</a></li>
+                            <li><a href="wishlist.html">Wishlist</a></li>
+                            <li><a href="404.html">Error</a></li>
+                            <li><a href="mailsuccess.html">Mail Success</a></li>
+                            <li><a href="privacypolicy.html">Privacy Policy</a></li>
+                            <li><a href="terms.html">Terms & Conditions</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="action-btn">
+                    <img src="img/icons/search.svg" alt="search">
+                </button>
+
+                <button class="action-btn">
+                    <img src="img/icons/user.svg" alt="user">
+                </button>
+
+                <button class="action-btn badge-wrapper">
+                    <img src="img/icons/favorite.svg" alt="favorites">
+                    <span class="counter-badge">0</span>
+                </button>
+
+                <button class="action-btn badge-wrapper" id="cart-icon-btn"> 
+                    <img src="img/icons/cart.svg" alt="cart">
+                    <span class="counter-badge" id="cart-badge">0</span>
+                </button>
+            </div>
+        </header>
+    
+    <main class="main-content">
+
+        <div class="container">
+
+            <div class="catalog-toolbar">
+                <select id="sort-select" class="sort-select">
+                    <option value="default">Best Selling</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                </select>
+                <span id="products-count" class="products-count">Showing 0 of 0 Products</span>
+            </div>
+
+            <section id="products-gridP" class="products-gridP"></section>
+
+
+            <nav class="pagination">
+                <button class="page-btn nav-btn" id="prev-btn" disabled>&larr; Previous</button>
+                <div id="page-numbers" class="page-numbers"></div>
+                <button class="page-btn nav-btn" id="next-btn">Next &rarr;</button>
+            </nav>
+
+        </div>
+    </main>
+    </div>
+
+
+    <div class="footer-divider"></div>
+
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="footer-col">
+                <h3 class="col-title">Help & Support</h3>
+                <ul class="contact-list">
+                    <li>
+                        <img src="img/icons/location.svg" alt="location" class="contact-icon">
+                        <span>742 Maplewood Drive, Springfield, IL 62704, USA</span>
+                    </li>
+                    <li>
+                        <img src="img/icons/phone.svg" alt="phone" class="contact-icon">
+                        <span>+1 (212) 555-0187</span>
+                    </li>
+                    <li>
+                        <img src="img/icons/mail.svg" alt="email" class="contact-icon">
+                        <span>support@example.com</span>
+                    </li>
+                </ul>
+
+                <div class="social-links">
+                    <a href="#" class="social-btn"><img src="img/icons/facebook.svg" alt="facebook"></a>
+                    <a href="#" class="social-btn"><img src="img/icons/instagram.svg" alt="instagram"></a>
+                    <a href="#" class="social-btn"><img src="img/icons/twitter.svg" alt="twitter"></a>
+                    <a href="#" class="social-btn"><img src="img/icons/whatsapp.svg" alt="whatsapp"></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="col-title">Account</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Login / Register</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="wishlist.html">Wishlist</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="col-title">Quick Link</h3>
+                <ul class="footer-links">
+                    <li><a href="privacypolicy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Refund Policy</a></li>
+                    <li><a href="terms.html">Terms of Use</a></li>
+                    <li><a href="#">FAQ's</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="col-title">Download App</h3>
+                <p class="app-desc">Get started in seconds – it's fast, free, and easy!</p>
+
+                <div class="app-buttons">
+                    <a href="#" class="app-btn">
+                        <img src="img/icons/apple.svg" alt="App Store" class="app-icon">
+                        <div>
+                            <small>Download on the</small>
+                            <strong>App Store</strong>
+                        </div>
+                    </a>
+
+                    <a href="#" class="app-btn">
+                        <img src="img/icons/google-play.svg" alt="Google Play" class="app-icon">
+                        <div>
+                            <small>Get it On</small>
+                            <strong>Google Play</strong>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>© 2026. All rights reserved</p>
+                <div class="payment-methods">
+                    <span>We Accept:</span>
+                    <img src="img/icons/visa.svg" alt="visa">
+                    <img src="img/icons/paypal.svg" alt="paypal">
+                    <img src="img/icons/mastercard.svg" alt="mastercard">
+                    <img src="img/icons/apple-pay.svg" alt="apple pay">
+                    <img src="img/icons/google-pay.svg" alt="google pay">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <div id="cart-modal" class="cart-modal-overlay">
+        <div class="cart-modal-content">
+            <div class="cart-header">
+                <h2>Cart View</h2>
+                <button id="close-cart-btn" class="close-btn">&times;</button>
+            </div>
+            
+            <ul id="cart-items-list" class="cart-items-list">
+            </ul>
+            
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Subtotal:</span>
+                    <strong id="cart-total-price">$0</strong>
+                </div>
+                <div class="cart-actions-btns">
+                    <a href="cart.html" class="btn-view-cart">View Cart</a>
+                    <a href="checkout.html" class="btn-checkout">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div> 
+</body>
+</html>

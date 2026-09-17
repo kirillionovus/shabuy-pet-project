@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop With Sidebar Page | $haBuy Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <script src="js/shop.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/wishlist.js" defer></script>
+
+    <style>
+        .shop-container{
+            max-width: 1370px;
+            width: 100%;
+            min-height: 800px;
+            margin: 100px auto 40px;
+            padding: 0 20px;
+            box-sizing: border-box;
+            display: flex;
+            gap: 24px;
+        }
+        .sidebar{
+            width: 290px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .sidebar-card{
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 18px 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+        .filter-clean-header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .filter-title{
+            font-size: 14px;
+            color: #64748b;
+            font-weight: 500;
+        }
+        .clean-btn{
+            background: none;
+            border: none;
+            color: #3b82f6;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .filter-header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 14px;
+        }
+        .filter-header i{
+            font-size: 14px;
+            color: #94a3b8;
+        }
+        .category-list{
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .category-list li{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: #64748b;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .category-list li:hover{
+            color: #3b82f6;
+        }
+        .category-list li.active{
+            color: #437fee;
+            font-weight: 700;
+        }
+        .category-list li.active .badge-count{
+            background-color: #437fee;
+            color: #ffffff;
+        }
+        .badge-count{
+            background-color: #f1f5f9;
+            color: #94a3b8;
+            font-size: 13px;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+        .price-labels{
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .range-slider{
+            position: relative;
+            height: 6px;
+            background-color: #e2e8f0;
+            border-radius: 3px;
+            margin: 15px 0;
+        }
+        .range-slider .track{
+            position: absolute;
+            height: 100%;
+            background-color: #437fee;
+            border-radius: 3px;
+            z-index: 1;
+        }
+        .range-slider input[type="range"]{
+            position: absolute;
+            width: 100%;
+            height: 6px;
+            top: 0;
+            left: 0;
+            background: none;
+            pointer-events: none;
+            -webkit-appearance: none;
+            appearance: none;
+            z-index: 2;
+        }
+        .range-slider input[type="range"]::-webkit-slider-thumb{
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            background: #437fee;
+            pointer-events: auto;
+            -webkit-appearance: none;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        .range-slider input[type="range"]::-moz-range-thumb{
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            background: #437fee;
+            pointer-events: auto;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            border: none;
+        }
+        .products-area{
+            flex-grow: 1;
+        }
+        .top-bar{
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 12px 20px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+        .select-wrapper{
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .select-wrapper select{  
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 14px;
+            color: #6e7883;
+            background-color: #ffffff;
+            cursor: pointer;
+            outline: none;
+        }
+        .select-wrapper i{
+            position: absolute;
+            right: 12px;
+            font-size: 13px;
+            color: #94a3b8;
+            pointer-events: none;
+        }
+        .products-count{
+            font-size: 14px;
+            color: #64748b;
+            font-weight: 500;
+        }
+        .products-grid{
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .product-image-backgroundS{
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+            padding-top: 30px;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(167, 167, 167, 0.171);
+        }
+        .product-card{
+            border-radius: 12px;
+            padding: 10px 10px 29px 10px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .product-card:hover{
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+        }
+        .badge{
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            z-index: 2;
+        }
+        .badge.out-of-stock{
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+        .badge.discount{
+            background-color: #437fee;
+            color: #ffffff;
+        }
+        .product-link{
+            text-decoration: none;
+            color: inherit;
+        }
+        .product-img{
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .product-img img{
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+        .product-title{
+            font-size: 14px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 305px;
+            white-space: normal;
+            word-break: break-word;
+        }
+        .product-price{
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 13px;
+        }
+        .old-price{
+            text-decoration: line-through;
+            color: #94a3b8;
+        }
+        .current-price{
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .pagination-wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            background-color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 12px;
+            width: fit-content;
+            margin: 0 auto;
+        }
+        .page-numbers{
+            display: flex;
+            gap: 6px;
+        }
+        .nav-btn, .page-btn{
+            background-color: transparent;
+            color: #64748b;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+        .page-btn.active{
+            background-color: #437fee;
+            color: #ffffff;
+        }
+        .nav-btn:disabled{
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 992px) {
+            .shop-container {
+                flex-direction: column;
+                margin-top: 80px;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .shop-container {
+                padding: 0 14px;
+            }
+
+            .catalog-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .select-wrapper {
+                width: 100%;
+            }
+
+            .select-wrapper select {
+                width: 100%;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .product-card {
+                padding: 8px 8px 20px 8px;
+            }
+
+            .product-img {
+                height: 120px;
+            }
+
+            .product-title {
+                font-size: 13px;
+                margin-bottom: 8px;
+            }
+
+            .pagination-wrapper {
+                gap: 6px;
+                padding: 4px 8px;
+            }
+
+            .nav-btn, .page-btn {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 440px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-img {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="backgroundP">
+        <header class="site-header">
+            <div class="container">
+            <div class="logo-container">
+                <a href="#">
+                    <img src="img/icon.png" alt="icon" class="logo" onclick="window.location.href='index.html';">
+                </a>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="main-ul">
+                    <li><a href="popular.html">Popular</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-link">Pages<img src="img/icons/arr-down.svg" alt="" class="menu-arrow"></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="cart.html">Cart</a></li>
+                            <li><a href="wishlist.html">Wishlist</a></li>
+                            <li><a href="404.html">Error</a></li>
+                            <li><a href="mailsuccess.html">Mail Success</a></li>
+                            <li><a href="privacypolicy.html">Privacy Policy</a></li>
+                            <li><a href="terms.html">Terms & Conditions</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="action-btn">
+                    <img src="img/icons/search.svg" alt="search">
+                </button>
+
+                <button class="action-btn">
+                    <img src="img/icons/user.svg" alt="user">
+                </button>
+
+                <button class="action-btn badge-wrapper">
+                    <img src="img/icons/favorite.svg" alt="favorites">
+                    <span class="counter-badge">0</span>
+                </button>
+
+                <button class="action-btn badge-wrapper" id="cart-icon-btn">
+                    <img src="img/icons/cart.svg" alt="cart">
+                    <span class="counter-badge" id="cart-badge">0</span>
+                </button>
+            </div>
+        </header>
+
+    <div class="shop-container">
+        <aside class="sidebar">
+            <div class="sidebar-card filter-clean-header">
+                <span class="filter-title">Filters:</span>
+                <button class="clean-btn" id="clean-filters-btn">Clean All</button>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="filter-header">
+                    <span>Category</span>
+                    <i class="fa-solid fa-chevron-up"></i>
+                </div>
+                <ul class="category-list" id="category-filter-list">
+                    <li data-category="computers-laptops"><span>Laptop & PC</span> <span class="badge-count">2</span></li>
+                    <li data-category="smartwatches"><span>Watches</span> <span class="badge-count">1</span></li>
+                    <li data-category="mobiles-tablets"><span>Mobile & Tablets</span> <span class="badge-count">2</span></li>
+                    <li data-category="sports-fitness"><span>Health & Sports</span> <span class="badge-count">1</span></li>
+                    <li data-category="home-appliances"><span>Home Appliances</span> <span class="badge-count">1</span></li>
+                    <li data-category="games-videos"><span>Games & Videos</span> <span class="badge-count">2</span></li>
+                    <li data-category="audio-video"><span>Televisions</span> <span class="badge-count">1</span></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="filter-header">
+                    <span>Price</span>
+                    <i class="fa-solid fa-chevron-up"></i>
+                </div>
+                <div class="price-labels">
+                    <span id="price-min-label">$0</span>
+                    <span id="price-max-label">$999</span>
+                </div>
+                <div class="range-slider">
+                    <div class="track" id="slider-track"></div>
+                    <input type="range" id="range-min" min="0" max="999" value="0" step="10">
+                    <input type="range" id="range-max" min="0" max="999" value="999" step="10">
+                </div>
+            </div>
+        </aside>
+
+        <main class="products-area">
+            <div class="top-bar">
+                <div class="select-wrapper">
+                    <select id="sort-select">
+                        <option value="default">Latest Products</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+
+                <span class="products-count" id="products-count">Showing 0 of 0 Products</span>
+            </div>
+
+            <div class="products-grid" id="products-gridP"></div>
+
+            <div class="pagination-wrapper">
+                <button class="nav-btn" id="prev-btn" disabled>
+                    <i class="fa-solid fa-arrow-left"></i> &larr; Previous
+                </button>
+                <div id="page-numbers" class="page-numbers"></div>
+                <button class="nav-btn" id="next-btn">
+                    Next &rarr;<i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </main>
+    </div>
+    </div>
+
+
+
+    <div class="footer-divider"></div>
+
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="footer-col">
+                <h3 class="col-title">Help & Support</h3>
+                <ul class="contact-list">
+                    <li>
+                        <img src="img/icons/location.svg" alt="location" class="contact-icon">
+                        <span>742 Maplewood Drive, Springfield, IL 62704, USA</span>
+                    </li>
+                    <li>
+                        <img src="img/icons/phone.svg" alt="phone" class="contact-icon">
+                        <span>+1 (212) 555-0187</span>
+                    </li>
+                    <li>
+                        <img src="img/icons/mail.svg" alt="email" class="contact-icon">
+                        <span>support@example.com</span>
+                    </li>
+                </ul>
+
+                <div class="social-links">
+                    <a href="#" class="social-btn"><img src="img/icons/facebook.svg" alt="facebook"></a>
+                    <a href="#" class="social-btn"><img src="img/icons/instagram.svg" alt="instagram"></a>
+                    <a href="#" class="social-btn"><img src="img/icons/twitter.svg" alt="twitter"></a>
+                    <a href="#" class="social-btn"><img src="img/icons/whatsapp.svg" alt="whatsapp"></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="col-title">Account</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Login / Register</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="wishlist.html">Wishlist</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="col-title">Quick Link</h3>
+                <ul class="footer-links">
+                    <li><a href="privacypolicy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Refund Policy</a></li>
+                    <li><a href="terms.html">Terms of Use</a></li>
+                    <li><a href="#">FAQ's</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="col-title">Download App</h3>
+                <p class="app-desc">Get started in seconds – it's fast, free, and easy!</p>
+
+                <div class="app-buttons">
+                    <a href="#" class="app-btn">
+                        <img src="img/icons/apple.svg" alt="App Store" class="app-icon">
+                        <div>
+                            <small>Download on the</small>
+                            <strong>App Store</strong>
+                        </div>
+                    </a>
+
+                    <a href="#" class="app-btn">
+                        <img src="img/icons/google-play.svg" alt="Google Play" class="app-icon">
+                        <div>
+                            <small>Get it On</small>
+                            <strong>Google Play</strong>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>© 2026. All rights reserved</p>
+                <div class="payment-methods">
+                    <span>We Accept:</span>
+                    <img src="img/icons/visa.svg" alt="visa">
+                    <img src="img/icons/paypal.svg" alt="paypal">
+                    <img src="img/icons/mastercard.svg" alt="mastercard">
+                    <img src="img/icons/apple-pay.svg" alt="apple pay">
+                    <img src="img/icons/google-pay.svg" alt="google pay">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="cart-modal" class="cart-modal-overlay">
+        <div class="cart-modal-content">
+            <div class="cart-header">
+                <h2>Cart View</h2>
+                <button id="close-cart-btn" class="close-btn">&times;</button>
+            </div>
+            
+            <ul id="cart-items-list" class="cart-items-list">
+            </ul>
+            
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Subtotal:</span>
+                    <strong id="cart-total-price">$0</strong>
+                </div>
+                <div class="cart-actions-btns">
+                    <a href="cart.html" class="btn-view-cart">View Cart</a>
+                    <a href="checkout.html" class="btn-checkout">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div> 
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist | $haBuy Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <script src="js/wishlist.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <style>
+        .wishlist-page-section{
+            max-width: 1370px;
+            width: 100%;
+            margin: 120px auto;
+            box-sizing: border-box;
+        }
+        .wishlist-header-top{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .wishlist-title{
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a202c;
+            margin: 0;
+        }
+        .clear-wishlist-btn{
+            background: none;
+            border: none;
+            color: #437fee;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0;
+            transition: color 0.2s ease;
+        }
+        .clear-wishlist-btn:hover{
+            color: #2e5aaa;
+        }
+        .wishlist-table-card{
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .wishlist-table-header{
+            display: grid;
+            grid-template-columns: 3fr 1fr 1fr 1.5fr 0.5fr;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #edf2f7;
+            color: #4a5568;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .wishlist-row{
+            display: grid;
+            grid-template-columns: 3fr 1fr 1fr 1.5fr 0.5fr;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #edf2f7;
+            font-size: 15px;
+            color: #2d3748;
+        }
+        .wishlist-row:last-child{
+            border-bottom: none;
+        }
+        .wishlist-product-info{
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .wishlist-product-img{
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 6px;
+            background-color: #f8fafc;
+            padding: 4px;
+        }
+        .stock-badge{
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #16a34a;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .btn-add-cart-table{
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 8px 18px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1a202c;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: fit-content;
+        }
+        .btn-add-cart-table:hover{
+            background: #f8fafc;
+            border-color: #cbd5e1;
+        }
+        .action-remove-btn{
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #a0aec0;
+            transition: all 0.2s ease;
+        }
+        .action-remove-btn:hover{
+            border-color: #e53e3e;
+            color: #e53e3e;
+        }
+        .wishlist-empty-wrapper{
+            text-align: center;
+            padding: 80px 0;
+            background: #ffffff;
+            border-radius: 12px;
+        }
+        .empty-wishlist-icon{
+            width: 70px;
+            height: 70px;
+            background: #edf2f7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        .empty-wishlist-icon img{
+            width: 39px;
+            height: 39px;
+        }
+        .empty-wishlist-text{
+            color: #4a5568;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+        .continue-shopping-btn{
+            background-color: #193468;
+            color: #ffffff;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            display: inline-block;
+            transition: background-color 0.2s ease;
+        }
+        .continue-shopping-btn:hover{
+            background-color: #162e5a;
+        }
+    </style>
+</head>
+<body>
+    <div class="backgroundP">
+        <header class="site-header">
+            <div class="container">
+                <div class="logo-container">
+                    <a href="index.html">
+                        <img src="img/icon.png" alt="icon" class="logo">
+                    </a>
+                </div>
+
+                <nav class="main-nav">
+                    <ul class="main-ul">
+                        <li><a href="popular.html">Popular</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-link">Pages<img src="img/icons/arr-down.svg" alt="" class="menu-arrow"></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="cart.html">Cart</a></li>
+                                <li><a href="wishlist.html">Wishlist</a></li>
+                                <li><a href="404.html">Error</a></li>
+                                <li><a href="mailsuccess.html">Mail Success</a></li>
+                                <li><a href="privacypolicy.html">Privacy Policy</a></li>
+                                <li><a href="terms.html">Terms & Conditions</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="action-btn">
+                        <img src="img/icons/search.svg" alt="search">
+                    </button>
+
+                    <button class="action-btn">
+                        <img src="img/icons/user.svg" alt="user">
+                    </button>
+
+                    <button class="action-btn badge-wrapper" onclick="window.location.href='wishlist.html'">
+                        <img src="img/icons/favorite.svg" alt="favorites">
+                        <span class="counter-badge" id="wishlist-badge">0</span>
+                    </button>
+
+                    <button class="action-btn badge-wrapper" id="cart-icon-btn">
+                        <img src="img/icons/cart.svg" alt="cart">
+                        <span class="counter-badge" id="cart-badge">0</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+    <main class="wishlist-page-section">
+        <div class="wishlist-header-top">
+            <h1 class="wishlist-title">Your Wishlist</h1>
+            <button id="clear-wishlist-btn" class="clear-wishlist-btn">Clear Wishlist Cart</button>
+        </div>
+
+        <div id="wishlist-empty-state" class="wishlist-empty-wrapper" style="display: none;">
+            <div class="empty-wishlist-icon">
+                <img src="img/icons/favorite.svg" alt="favorite">
+            </div>
+            <p class="empty-wishlist-text">Your wishlist is empty!</p>
+            <a href="shop.html" class="continue-shopping-btn">Continue Shopping</a>
+        </div>
+
+        <div id="wishlist-content-card" class="wishlist-table-card">
+            <div class="wishlist-table-header">
+                <span>Product</span>
+                <span>Unit Price</span>
+                <span>Stock Status</span>
+                <span>Action</span>
+                <span></span>
+            </div>
+            <div id="wishlist-table-body" class="wishlist-table-body"></div>
+        </div>
+    </main>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="footer-col">
+                <h3 class="col-title">Help & Support</h3>
+                <ul class="contact-list">
+                    <li>
+                        <img src="img/icons/location.svg" alt="location" class="contact-icon">
+                        <span>742 Maplewood Drive, Springfield, IL 62704, USA</span>
+                    </li>
+                    <li>
+                        <img src="img/icons/phone.svg" alt="phone" class="contact-icon">
+                        <span>+1 (212) 555-0187</span>
+                    </li>
+                    <li>
+                        <img src="img/icons/mail.svg" alt="email" class="contact-icon">
+                        <span>support@example.com</span>
+                    </li>
+                </ul>
+
+                <div class="social-links">
+                    <a href="#" class="social-btn"><img src="img/icons/facebook.svg" alt="facebook"></a>
+                    <a href="#" class="social-btn"><img src="img/icons/instagram.svg" alt="instagram"></a>
+                    <a href="#" class="social-btn"><img src="img/icons/twitter.svg" alt="twitter"></a>
+                    <a href="#" class="social-btn"><img src="img/icons/whatsapp.svg" alt="whatsapp"></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="col-title">Account</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Login / Register</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="wishlist.html">Wishlist</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="col-title">Quick Link</h3>
+                <ul class="footer-links">
+                    <li><a href="privacypolicy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Refund Policy</a></li>
+                    <li><a href="terms.html">Terms of Use</a></li>
+                    <li><a href="#">FAQ's</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="col-title">Download App</h3>
+                <p class="app-desc">Get started in seconds – it's fast, free, and easy!</p>
+
+                <div class="app-buttons">
+                    <a href="#" class="app-btn">
+                        <img src="img/icons/apple.svg" alt="App Store" class="app-icon">
+                        <div>
+                            <small>Download on the</small>
+                            <strong>App Store</strong>
+                        </div>
+                    </a>
+
+                    <a href="#" class="app-btn">
+                        <img src="img/icons/google-play.svg" alt="Google Play" class="app-icon">
+                        <div>
+                            <small>Get it On</small>
+                            <strong>Google Play</strong>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>© 2026. All rights reserved</p>
+                <div class="payment-methods">
+                    <span>We Accept:</span>
+                    <img src="img/icons/visa.svg" alt="visa">
+                    <img src="img/icons/paypal.svg" alt="paypal">
+                    <img src="img/icons/mastercard.svg" alt="mastercard">
+                    <img src="img/icons/apple-pay.svg" alt="apple pay">
+                    <img src="img/icons/google-pay.svg" alt="google pay">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <div id="cart-modal" class="cart-modal-overlay">
+        <div class="cart-modal-content">
+            <div class="cart-header">
+                <h2>Cart View</h2>
+                <button id="close-cart-btn" class="close-btn">&times;</button>
+            </div>
+            
+            <ul id="cart-items-list" class="cart-items-list">
+            </ul>
+            
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Subtotal:</span>
+                    <strong id="cart-total-price">$0</strong>
+                </div>
+                <div class="cart-actions-btns">
+                    <a href="cart.html" class="btn-view-cart">View Cart</a>
+                    <a href="checkout.html" class="btn-checkout">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div> 
+</body>
+</html>

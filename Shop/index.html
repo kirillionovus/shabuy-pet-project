@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$haBuy Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <script src="js/main.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/wishlist.js" defer></script>
+</head>
+<body>
+    <div class="background">
+        <header class="site-header">
+        <div class="container">
+        <div class="logo-container">
+            <a href="#">
+                <img src="img/icon.png" alt="icon" class="logo" onclick="window.location.href='index.html';">
+            </a>
+        </div>
+
+        <nav class="main-nav">
+            <ul class="main-ul">
+                <li><a href="popular.html">Popular</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-link">Pages<img src="img/icons/arr-down.svg" alt="" class="menu-arrow"></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="cart.html">Cart</a></li>
+                        <li><a href="wishlist.html">Wishlist</a></li>
+                        <li><a href="404.html">Error</a></li>
+                        <li><a href="mailsuccess.html">Mail Success</a></li>
+                        <li><a href="privacypolicy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <button class="action-btn">
+                <img src="img/icons/search.svg" alt="search">
+            </button>
+
+            <button class="action-btn">
+                <img src="img/icons/user.svg" alt="user">
+            </button>
+
+            <button class="action-btn badge-wrapper">
+                <img src="img/icons/favorite.svg" alt="favorites">
+                <span class="counter-badge">0</span>
+            </button>
+
+            <button class="action-btn badge-wrapper" id="cart-icon-btn">
+                <img src="img/icons/cart.svg" alt="cart">
+                <span class="counter-badge" id="cart-badge">0</span>
+            </button>
+        </div>
+    </div>
+        </header>
+
+    <main>
+        <section class="promo-section">
+            <div class="promo-card card-large">
+                
+                <div class="slider-window">
+                    <div class="slider-track">
+
+                        <div class="slide">
+                            <div class="card-content">
+                                <div class="badge"><strong>20%</strong> SALE OFF</div>
+                                <h2 onclick="window.location.href='product.html?id=1'">SAMSUNG Galaxy S26 Ultra</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ipsum at risus euismod lobortis in</p>
+                                <button class="btn-shop" onclick="window.location.href='product.html?id=1'">Shop Now</button>
+                            </div>
+                            <div class="card-image">
+                                <img src="img/SamsungS26Ultra.png" alt="Samsung S26 Ultra">
+                            </div>
+                        </div>
+
+                        <div class="slide">
+                            <div class="card-content">
+                                <div class="badge"><strong>29%</strong> SALE OFF</div>
+                                <h2 onclick="window.location.href='product.html?id=2'">APPLE AirPods Max 2</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ipsum at risus euismod lobortis in</p>
+                                <button class="btn-shop" onclick="window.location.href='product.html?id=2'">Shop Now</button>
+                            </div>
+                            <div class="card-image">
+                                <img src="img/APPLEAirPodsMax2.png" alt="APPLE AirPods Max 2">
+                            </div>
+                        </div>
+
+                        <div class="slide">
+                            <div class="card-content">
+                                <div class="badge"><strong>30%</strong> SALE OFF</div>
+                                <h2 onclick="window.location.href='product.html?id=3'">Apple iPad Pro 2025</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at ipsum at risus euismod lobortis in</p>
+                                <button class="btn-shop" onclick="window.location.href='product.html?id=3'">Shop Now</button>
+                            </div>
+                            <div class="card-image">
+                                <img src="img/iPadPro.png" alt="Apple iPad Pro 2025">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slider-dots">
+                        <span class="active"></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="promo-card card-small">
+                <div class="card-content">
+                    <h3 onclick="window.location.href='product.html?id=7'">iPhone 16 Pro & 16 Pro Max</h3>
+                    <p class="subtitle">Built for Apple Intelligence</p>
+                    <span class="tag">LIMITED TIME OFFER</span>
+                    <div class="price-box">
+                        <span class="price-new">$799</span>
+                        <span class="price-old">$899</span>
+                    </div>
+                </div>
+                <div class="card-image">
+                    <img src="img/iphone16promax.png" alt="iphone16 pro max">
+                </div>
+            </div>
+
+            <div class="promo-card card-small">
+                <div class="card-content">
+                    <h3 onclick="window.location.href='product.html?id=4'">Mackbook Pro M4</h3>
+                    <p class="subtitle">14-core CPU with 10 and 4 efficiency cores</p>
+                    <span class="tag">LIMITED TIME OFFER</span>
+                    <div class="price-box">
+                        <span class="price-new">$600</span>
+                        <span class="price-old">$699</span>
+                    </div>
+                </div>
+                <div class="card-image">
+                    <img src="img/macbookairm4.png" alt="macbook air m4">
+                </div>
+            </div>
+        </section>
+    </div>
+
+        <section class="categories-section">
+            <div class="categories-header">
+                <h2>Browse by Category</h2>
+                <div class="slider-arrows">
+                    <button class="arrow-btn btn-prev"><img src="img/icons/arr-left.svg" alt="arrow left"></button>
+                    <button class="arrow-btn btn-next"><img src="img/icons/arr-right.svg" alt="arrow right"></button>
+                </div>
+            </div>
+
+
+            <div class="categories-window">
+                <div class="categories-list">
+                    <a href="popular.html?id=computers-laptops">
+                        <div class="category-circle">
+                            <img src="img/laptop.png" alt="Laptop & PC">
+                        </div>
+                        <span>Laptop & PC</span>
+                    </a>
+
+                    <a href="popular.html?id=smartwatches">
+                        <div class="category-circle">
+                            <img src="img/watches.png" alt="Watches">
+                        </div>
+                        <span>Watches</span>
+                    </a>
+
+                    <a href="popular.html?id=mobiles-tablets">
+                        <div class="category-circle">
+                            <img src="img/iphone.png" alt="Mobile & Tablets">
+                        </div>
+                        <span>Mobile & Tablets</span>
+                    </a>
+
+                    <a href="popular.html?id=sports-fitness">
+                        <div class="category-circle">
+                            <img src="img/dorozka.png" alt="Health & Sports">
+                        </div>
+                        <span>Health & Sports</span>
+                    </a>
+
+                    <a href="popular.html?id=home-appliances">
+                        <div class="category-circle">
+                            <img src="img/blender.png" alt="Home Appliances">
+                        </div>
+                        <span>Home Appliances</span>
+                    </a>
+
+                    <a href="popular.html?id=games-videos">
+                        <div class="category-circle">
+                            <img src="img/dualsense.png" alt="Games & Videos">
+                        </div>
+                        <span>Games & Videos</span>
+                    </a>
+
+                    <a href="popular.html?id=audio-video">
+                        <div class="category-circle">
+                            <img src="img/TV.png" alt="Televisions">
+                        </div>
+                        <span>Televisions</span>
+                    </a>
+                </div> 
+            </div>
+        </section>
+
+
+        <section class="products-section">
+            <div class="products-header">
+                <h2>New Arrivals</h2>
+                <a href="#" class="btn-view-all">View All</a>
+            </div>
+
+            <div class="products-grid">      
+                <div class="product-card">
+                    <div class="product-image-box" onclick="window.location.href='product.html?id=5'">
+                        <span class="discount-badge">35% OFF</span>
+                        <img src="img/xbox1.png" alt="Xbox One Wireless Controller">
+                    </div>
+                    <h3 class="product-title" onclick="window.location.href='product.html?id=5'">Xbox One Wireless Controller</h3>
+                    <div class="product-price">
+                        <span class="price-old-na">$54</span>
+                        <span class="price-new-na">$35</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-box" onclick="window.location.href='product.html?id=2'">
+                        <span class="discount-badge">10% OFF</span>
+                        <img src="img/APPLEAirPodsMax2.png" alt="APPLE AirPods Max 2">
+                    </div>
+                    <h3 class="product-title" onclick="window.location.href='product.html?id=2'">APPLE AirPods Max 2</h3>
+                    <div class="product-price">
+                        <span class="price-old-na">$549</span>
+                        <span class="price-new-na">$499</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-box" onclick="window.location.href='product.html?id=4'">
+                        <span class="discount-badge">14% OFF</span>
+                        <img src="img/macbookairm4.png" alt="Mackbook Pro M4">
+                    </div>
+                    <h3 class="product-title" onclick="window.location.href='product.html?id=4'">Mackbook Pro M4</h3>
+                    <div class="product-price">
+                        <span class="price-old-na">$699</span>
+                        <span class="price-new-na">$600</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-box" onclick="window.location.href='product.html?id=6'">
+                        <span class="discount-badge">20% OFF</span>
+                        <img src="img/dualsense.png" alt="Sony DualSense Wireless Controller">
+                    </div>
+                    <h3 class="product-title" onclick="window.location.href='product.html?id=6'">Sony DualSense Wireless Controller</h3>
+                    <div class="product-price">
+                        <span class="price-old-na">$75</span>
+                        <span class="price-new-na">$60</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-box" onclick="window.location.href='product.html?id=7'">
+                        <span class="discount-badge">33% OFF</span>
+                        <img src="img/iphone16promax.png" alt="Iphone 16 Pro Max">
+                    </div>
+                    <h3 class="product-title" onclick="window.location.href='product.html?id=7'">iPhone 16 Pro Max</h3>
+                    <div class="product-price">
+                        <span class="price-old-na">$898</span>
+                        <span class="price-new-na">$600</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-box" onclick="window.location.href='product.html?id=8'">
+                        <img src="img/blender.png" alt="Blender">
+                    </div>
+                    <h3 class="product-title" onclick="window.location.href='product.html?id=8'">Portable Electric Grinder Maker</h3>
+                    <div class="product-price">
+                        <span class="price-new-na">$75</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-box" onclick="window.location.href='product.html?id=9'">
+                        <span class="discount-badge">35% OFF</span>
+                        <img src="img/iphone.png" alt="Iphone 13 Pro">
+                    </div>
+                    <h3 class="product-title" onclick="window.location.href='product.html?id=9'">iPhone 13 Pro</h3>
+                    <div class="product-price">
+                        <span class="price-old-na">$699</span>
+                        <span class="price-new-na">$450</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-box" onclick="window.location.href='product.html?id=5'">
+                        <span class="discount-badge">35% OFF</span>
+                        <img src="img/xbox1.png" alt="Xbox One Wireless Controller">
+                    </div>
+                    <h3 class="product-title" onclick="window.location.href='product.html?id=5'">Xbox One Wireless Controller</h3>
+                    <div class="product-price">
+                        <span class="price-old-na">$54</span>
+                        <span class="price-new-na">$35</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="banner-section">
+
+            <div class="banner-card banner-large">
+                <div class="banner-content">
+                    <span class="banner-subtitle">Apple iPhone 17 Pro Max</span>
+                    <h2>UP TO 30% OFF</h2>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut doloribus, porro vitae animi unde laborum voluptatem voluptatibus velit ipsum quam?</p>
+                    <button class="btn-primary" onclick="window.location.href='404.html'">Purchase Now</button>
+                </div>
+                <div class="banner-image">
+                    <img src="img/iPhone17ProMax.png" alt="iPhone 17 Pro Max">
+                </div>
+            </div>
+
+            <div class="banner-card banner-small">
+                <div class="banner-content">
+                    <span class="banner-subtitle">Foldable Motorised Treadmill</span>
+                    <h3>Workout At Home</h3>
+                    <h2>FLAT 20% OFF</h2>
+                    <button class="btn-dark" onclick="window.location.href='product.html?id=10'">Grab the deal</button>
+                </div>
+                <div class="banner-image">
+                    <img src="img/treadmill.png" alt="Treadmill">
+                </div>
+            </div>
+
+            <div class="banner-card banner-small">
+                <div class="banner-content">
+                    <span class="banner-subtitle">Apple Watch Ultra</span>
+                    <h3>UP TO 40% OFF</h3>
+                    <p>The aerospace-grade titanium case strikes the perfect balance of everything.</p>
+                    <button class="btn-dark" onclick="window.location.href='product.html?id=11'">Grab the deal</button>
+                </div>
+                <div class="banner-image">
+                    <img src="img/AppleWatchUltra.png" alt="Apple Watch Ultra">
+                </div>
+            </div>
+        </section>
+
+
+        <section class="bestsellers-section">
+            <div class="bestsellers-header">
+                <h2>Best Selling Products</h2>
+                <p>These top picks are flying off the shelves! Find out what everyone’s loving right now.</p>
+            </div>
+
+            <div class="bestsellers-grid">
+                <div class="bestseller-card" onclick="window.location.href='product.html?id=7'">
+                    <div class="card-info">
+                        <h3 class="bestseller-title">iPhone 16 Pro Max</h3>
+                        <div class="bestseller-price">
+                            <span class="price-new-na">$600</span>
+                            <span class="price-old-na">$898</span>
+                        </div>
+                    </div>
+                    <div class="bestseller-image">
+                        <img src="img/iphone16promax.png" alt="iPhone 16 Pro Max">
+                    </div>
+                </div>
+
+                <div class="bestseller-card" onclick="window.location.href='product.html?id=12'">
+                    <div class="card-info">
+                        <h3 class="bestseller-title">Logitech G304 LIGHTSPEED</h3>
+                        <div class="bestseller-price">
+                            <span class="price-new-na">$40</span>
+                            <span class="price-old-na">$65</span>
+                        </div>
+                    </div>
+                    <div class="bestseller-image">
+                        <img src="img/LogitechG304.png" alt="Logitech G304 LIGHTSPEED">
+                    </div>
+                </div>
+
+                <div class="bestseller-card" onclick="window.location.href='product.html?id=13'">
+                    <div class="card-info">
+                        <h3 class="bestseller-title">Rangs 43 Inch Frameless FHD Double Glass Android TV</h3>
+                        <div class="bestseller-price">
+                            <span class="price-new-na">$700</span>
+                            <span class="price-old-na">$799</span>
+                        </div>
+                    </div>
+                    <div class="bestseller-image">
+                        <img src="img/TV.png" alt="Rangs 43 Inch Frameless FHD Double Glass Android TV">
+                    </div>
+                </div>
+
+                <div class="bestseller-card" onclick="window.location.href='product.html?id=11'">
+                    <div class="card-info">
+                        <h3 class="bestseller-title">Apple Watch Ultra</h3>
+                        <div class="bestseller-price">
+                            <span class="price-new-na">$80</span>
+                            <span class="price-old-na">$99</span>
+                        </div>
+                    </div>
+                    <div class="bestseller-image">
+                        <img src="img/AppleWatchUltra.png" alt="Apple Watch Ultra">
+                    </div>
+                </div>
+
+                <div class="bestseller-card" onclick="window.location.href='product.html?id=8'">
+                    <div class="card-info">
+                        <h3 class="bestseller-title">Portable Electric Grinder Maker</h3>
+                        <div class="bestseller-price">
+                            <span class="price-new-na">$75</span>
+                        </div>
+                    </div>
+                    <div class="bestseller-image">
+                        <img src="img/blender.png" alt="Portable Electric Grinder Maker">
+                    </div>
+                </div>
+
+                <div class="bestseller-card" onclick="window.location.href='product.html?id=4'">
+                    <div class="card-info">
+                        <h3 class="bestseller-title">Mackbook Pro M4</h3>
+                        <div class="bestseller-price">
+                            <span class="price-new-na">$600</span>
+                            <span class="price-old-na">$699</span>
+                        </div>
+                    </div>
+                    <div class="bestseller-image">
+                        <img src="img/macbookairm4.png" alt="Mackbook Pro M4">
+                    </div>
+                </div>
+            </div>
+
+            <div class="bestsellers-footer">
+                <button class="btn-view-all" onclick="window.location.href='popular.html'">View All</button>
+            </div>
+        </section>
+        
+
+        <section class="timer-banner">
+            <div class="timer-banner-content">
+                <span class="banner-tag">Don't Miss!!</span>
+                <h2 class="banner-title">Enhance Your Gaming Experience</h2>
+                <p class="banner-subtitle">Sony DualSense Wireless Controller</p>
+
+                <div class="countdown-timer">
+                    <div class="time-box">
+                        <span class="time-number" id="days">00</span>
+                        <span class="time-label">Days</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="time-number" id="hours">00</span>
+                        <span class="time-label">Hours</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="time-number" id="minutes">00</span>
+                        <span class="time-label">Minutes</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="time-number" id="seconds">00</span>
+                        <span class="time-label">Seconds</span>
+                    </div>
+                </div>
+
+                <button class="btn-primary btn-check-out" onclick="window.location.href='product.html?id=6'">Check it Out!</button>
+            </div>
+
+            <div class="timer-banner-image">
+                <img src="img/DualsenseExtra.png" alt="Sony DualSense Wireless Controller">
+            </div>
+        </section>
+
+        <section class="feedback-section">
+            <div class="categories-header feedback-header">
+                <h2>User Feedbacks</h2>
+                <div class="slider-arrows">
+                    <button class="arrow-btn btn-prev"><img src="img/icons/arr-left.svg" alt="arrow left"></button>
+                    <button class="arrow-btn btn-next"><img src="img/icons/arr-right.svg" alt="arrow right"></button>
+                </div>
+            </div>
+
+            <div class="feedback-window">
+                <div class="feedback-grid">
+                    <div class="feedback-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="feedback-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat totam ipsa omnis rem autem incidunt id quis nam iusto eaque.</p>
+                        <div class="author-info">
+                            <img src="img/person1.jpg" alt="Wilson Dias" class="avatar">
+                            <div>
+                                <h4 class="author-name">Wilson Dias</h4>
+                                <span class="author-role">Backend Developer</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feedback-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="feedback-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat totam ipsa omnis rem autem incidunt id quis nam iusto eaque.</p>
+                        <div class="author-info">
+                            <img src="img/person2.jpg" alt="John Doe" class="avatar">
+                            <div>
+                                <h4 class="author-name">John Doe</h4>
+                                <span class="author-role">Frontend Developer</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feedback-card">
+                        <div class="stars">★★★★<span class="stars-gray">★</span></div>
+                        <p class="feedback-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat totam ipsa omnis rem autem incidunt id quis nam iusto eaque.</p>
+                        <div class="author-info">
+                            <img src="img/person3.jpg" alt="Lisa Barret" class="avatar">
+                            <div>
+                                <h4 class="author-name">Lisa Barret</h4>
+                                <span class="author-role">Web Designer</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feedback-card">
+                        <div class="stars">★★★★<span class="stars-gray">★</span></div>
+                        <p class="feedback-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat totam ipsa omnis rem autem incidunt id quis nam iusto eaque.</p>
+                        <div class="author-info">
+                            <img src="img/person4.jpg" alt="Lisa Barret" class="avatar">
+                            <div>
+                                <h4 class="author-name">Jason Barboza</h4>
+                                <span class="author-role">Full stack Developer</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feedback-card">
+                        <div class="stars">★★★<span class="stars-gray">★★</span></div>
+                        <p class="feedback-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat totam ipsa omnis rem autem incidunt id quis nam iusto eaque.</p>
+                        <div class="author-info">
+                            <img src="img/person5.jpg" alt="Lisa Barret" class="avatar">
+                            <div>
+                                <h4 class="author-name">Robby Wilson</h4>
+                                <span class="author-role">Devops engineer</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feedback-card">
+                        <div class="stars">★★★★★<span class="stars-gray"></span></div>
+                        <p class="feedback-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat totam ipsa omnis rem autem incidunt id quis nam iusto eaque.</p>
+                        <div class="author-info">
+                            <img src="img/person6.jpg" alt="Lisa Barret" class="avatar">
+                            <div>
+                                <h4 class="author-name">Mary Katson</h4>
+                                <span class="author-role">Serial Entrepreneur</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>  
+        
+        <section class="features-section">
+            <div class="features">
+                <div class="feature-item">
+                    <img src="img/icons/rocket.svg" alt="Free Shipping" class="feature-icon">
+                    <div class="feature-text">
+                        <h4>Free Shipping</h4>
+                        <p>For all orders over $200</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <img src="img/icons/refund.svg" alt="1 & 1 Returns" class="feature-icon">
+                    <div class="feature-text">
+                        <h4>1 & 1 Returns</h4>
+                        <p>Cancellation after 1 day</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <img src="img/icons/secure.svg" alt="100% Secure Payments" class="feature-icon">
+                    <div class="feature-text">
+                        <h4>100% Secure Payments</h4>
+                        <p>Gurantee secure payments</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <img src="img/icons/support.svg" alt="24/7 Dedicated Support" class="feature-icon">
+                    <div class="feature-text">
+                        <h4>24/7 Dedicated Support</h4>
+                        <p>Anywhere & Anytime</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <div class="footer-divider"></div>
+
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="footer-col">
+                <h3 class="col-title">Help & Support</h3>
+                <ul class="contact-list">
+                    <li>
+                        <img src="img/icons/location.svg" alt="location" class="contact-icon">
+                        <span>742 Maplewood Drive, Springfield, IL 62704, USA</span>
+                    </li>
+                    <li>
+                        <img src="img/icons/phone.svg" alt="phone" class="contact-icon">
+                        <span>+1 (212) 555-0187</span>
+                    </li>
+                    <li>
+                        <img src="img/icons/mail.svg" alt="email" class="contact-icon">
+                        <span>support@example.com</span>
+                    </li>
+                </ul>
+
+                <div class="social-links">
+                    <a href="#" class="social-btn"><img src="img/icons/facebook.svg" alt="facebook"></a>
+                    <a href="#" class="social-btn"><img src="img/icons/instagram.svg" alt="instagram"></a>
+                    <a href="#" class="social-btn"><img src="img/icons/twitter.svg" alt="twitter"></a>
+                    <a href="#" class="social-btn"><img src="img/icons/whatsapp.svg" alt="whatsapp"></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="col-title">Account</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Login / Register</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="wishlist.html">Wishlist</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="col-title">Quick Link</h3>
+                <ul class="footer-links">
+                    <li><a href="privacypolicy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Refund Policy</a></li>
+                    <li><a href="terms.html">Terms of Use</a></li>
+                    <li><a href="#">FAQ's</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="col-title">Download App</h3>
+                <p class="app-desc">Get started in seconds – it's fast, free, and easy!</p>
+
+                <div class="app-buttons">
+                    <a href="#" class="app-btn">
+                        <img src="img/icons/apple.svg" alt="App Store" class="app-icon">
+                        <div>
+                            <small>Download on the</small>
+                            <strong>App Store</strong>
+                        </div>
+                    </a>
+
+                    <a href="#" class="app-btn">
+                        <img src="img/icons/google-play.svg" alt="Google Play" class="app-icon">
+                        <div>
+                            <small>Get it On</small>
+                            <strong>Google Play</strong>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>© 2026. All rights reserved</p>
+                <div class="payment-methods">
+                    <span>We Accept:</span>
+                    <img src="img/icons/visa.svg" alt="visa">
+                    <img src="img/icons/paypal.svg" alt="paypal">
+                    <img src="img/icons/mastercard.svg" alt="mastercard">
+                    <img src="img/icons/apple-pay.svg" alt="apple pay">
+                    <img src="img/icons/google-pay.svg" alt="google pay">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="cart-modal" class="cart-modal-overlay">
+        <div class="cart-modal-content">
+            <div class="cart-header">
+                <h2>Cart View</h2>
+                <button id="close-cart-btn" class="close-btn">&times;</button>
+            </div>
+            
+            <ul id="cart-items-list" class="cart-items-list">
+            </ul>
+            
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Subtotal:</span>
+                    <strong id="cart-total-price">$0</strong>
+                </div>
+                <div class="cart-actions-btns">
+                    <a href="cart.html" class="btn-view-cart">View Cart</a>
+                    <a href="checkout.html" class="btn-checkout">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div> 
+</body>
+</html>

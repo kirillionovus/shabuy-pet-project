@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page | $haBuy Store</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <script src="js/cart.js" defer></script>
+    <script src="js/cart-page.js" defer></script>
+    <script src="js/wishlist.js" defer></script>
+
+    <style>
+        .cart-page-section{
+            max-width: 1370px;
+            width: 100%;
+            margin: 120px auto;
+            box-sizing: border-box;
+        }
+
+        .cart-header-top{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .cart-title{
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a202c;
+            margin: 0;
+        }
+
+        .clear-cart-link{
+            background: none;
+            border: none;
+            color: #437fee;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0;
+            transition: color 0.2s ease;
+        }
+
+        .clear-cart-link:hover{
+            color: #2e5aaa;
+        }
+
+        .cart-grid{
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .cart-table-card,
+        .coupon-card,
+        .summary-card{
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .cart-table-header{
+            display: grid;
+            grid-template-columns: 3fr 1fr 1.2fr 1fr 0.5fr;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #edf2f7;
+            color: #4a5568;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .cart-row{
+            display: grid;
+            grid-template-columns: 3fr 1fr 1.2fr 1fr 0.5fr;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #edf2f7;
+            font-size: 15px;
+            color: #2d3748;
+        }
+
+        .cart-product-info{
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .cart-product-img{
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        .quantity-control{
+            display: flex;
+            align-items: center;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            width: fit-content;
+            overflow: hidden;
+        }
+
+        .quantity-btn{
+            background: #ffffff;
+            border: none;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            color: #4a5568;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+        }
+
+        .quantity-btn:hover{
+            background: #f7fafc;
+        }
+
+        .quantity-value{
+            width: 40px;
+            height: 32px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1a202c;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            -moz-appearance: textfield;
+        }
+
+        .quantity-value::-webkit-outer-spin-button,
+        .quantity-value::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .action-remove-btn{
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #a0aec0;
+            transition: all 0.2s ease;
+        }
+
+        .action-remove-btn:hover{
+            border-color: #e53e3e;
+            color: #e53e3e;
+        }
+
+        .coupon-card{
+            margin-top: 24px;
+        }
+
+        .coupon-card label{
+            display: block;
+            font-size: 14px;
+            color: #4a5568;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .coupon-input-group{
+            display: flex;
+            gap: 12px;
+        }
+
+        .coupon-input-group input{
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 15px;
+            color: #2d3748;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .coupon-input-group input::placeholder{
+            color: #a0aec0;
+        }
+
+        .coupon-input-group input:focus{
+            border-color: #3b82f6;
+        }
+
+        .apply-coupon-btn{
+            background-color: #437fee;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 24px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .apply-coupon-btn:hover{
+            background-color: #2e5aaa;
+        }
+
+        .summary-card .summary-title{
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a202c;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #edf2f7;
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+
+        .summary-table-header{
+            display: flex;
+            justify-content: space-between;
+            color: #4a5568;
+            font-size: 14px;
+            font-weight: 500;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .summary-item-row{
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            color: #2d3748;
+            font-size: 15px;
+        }
+
+        .summary-total-row{
+            display: flex;
+            justify-content: space-between;
+            padding-top: 16px;
+            margin-top: 12px;
+            border-top: 1px solid #edf2f7;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a202c;
+        }
+
+        .checkout-btn{
+            display: block;
+            width: 100%;
+            background-color: #437fee;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 0;
+            font-size: 15px;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 20px;
+            box-sizing: border-box;
+            transition: background-color 0.2s ease;
+        }
+
+        .checkout-btn:hover{
+            background-color: #2e5aaa;
+        }
+
+        .cart-empty-wrapper{
+            text-align: center;
+            padding: 80px 0;
+            background: #ffffff;
+            border-radius: 12px;
+        }
+
+        .empty-cart-icon{
+            width: 70px;
+            height: 70px;
+            background: #edf2f7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+
+        .empty-cart-text{
+            color: #4a5568;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .continue-shopping-btn{
+            background-color: #193468;
+            color: #ffffff;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            display: inline-block;
+            transition: background-color 0.2s ease;
+        }
+
+        .continue-shopping-btn:hover{
+            background-color: #162e5a;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="backgroundP">
+        <header class="site-header">
+            <div class="container">
+            <div class="logo-container">
+                <a href="#">
+                    <img src="img/icon.png" alt="icon" class="logo" onclick="window.location.href='index.html';">
+                </a>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="main-ul">
+                    <li><a href="popular.html">Popular</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-link">Pages<img src="img/icons/arr-down.svg" alt="" class="menu-arrow"></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="cart.html">Cart</a></li>
+                            <li><a href="wishlist.html">Wishlist</a></li>
+                            <li><a href="404.html">Error</a></li>
+                            <li><a href="mailsuccess.html">Mail Success</a></li>
+                            <li><a href="privacypolicy.html">Privacy Policy</a></li>
+                            <li><a href="terms.html">Terms & Conditions</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="action-btn">
+                    <img src="img/icons/search.svg" alt="search">
+                </button>
+
+                <button class="action-btn">
+                    <img src="img/icons/user.svg" alt="user">
+                </button>
+
+                <button class="action-btn badge-wrapper">
+                    <img src="img/icons/favorite.svg" alt="favorites">
+                    <span class="counter-badge">0</span>
+                </button>
+
+                <button class="action-btn badge-wrapper" id="cart-icon-btn">
+                    <img src="img/icons/cart.svg" alt="cart">
+                    <span class="counter-badge" id="cart-badge">0</span>
+                </button>
+            </div>
+        </header>
+
+
+    <main class="cart-page-section">
+            <div class="cart-header-top">
+                <h1 class="cart-title">Your Cart</h1>
+                <button id="clear-cart-btn" class="clear-cart-link">Clear Shopping Cart</button>
+            </div>
+
+            <div id="cart-empty-state" class="cart-empty-wrapper" style="display: none;">
+                <div class="empty-cart-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#a0aec0" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                </div>
+                <p class="empty-cart-text">Your cart is empty!</p>
+                <a href="shop.html" class="continue-shopping-btn">Continue Shopping</a>
+            </div>
+
+            <div id="cart-content-grid" class="cart-grid">
+                <div class="cart-left-col">
+                    <div class="cart-table-card">
+                        <div class="cart-table-header">
+                            <span>Product</span>
+                            <span>Price</span>
+                            <span>Quantity</span>
+                            <span>Subtotal</span>
+                            <span>Action</span>
+                        </div>
+                        <div id="cart-table-body" class="cart-table-body"></div>
+                    </div>
+
+                    <div class="coupon-card">
+                        <label for="coupon-code">Have any discount code?</label>
+                        <div class="coupon-input-group">
+                            <input type="text" id="coupon-code" placeholder="Enter coupon code">
+                            <button type="button" class="apply-coupon-btn">Apply</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cart-right-col">
+                    <div class="summary-card">
+                        <h2 class="summary-title">Order Summary</h2>
+                        <div class="summary-table-header">
+                            <span>Product</span>
+                            <span>Subtotal</span>
+                        </div>
+                        <div id="summary-items-list" class="summary-items-list"></div>
+                        <div class="summary-total-row">
+                            <span>Total</span>
+                            <strong id="summary-total-price">$0</strong>
+                        </div>
+                        <a href="checkout.html" class="checkout-btn">Process to Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+    <div class="footer-divider"></div>
+
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="footer-col">
+                <h3 class="col-title">Help & Support</h3>
+                <ul class="contact-list">
+                    <li>
+                        <img src="img/icons/location.svg" alt="location" class="contact-icon">
+                        <span>742 Maplewood Drive, Springfield, IL 62704, USA</span>
+                    </li>
+                    <li>
+                        <img src="img/icons/phone.svg" alt="phone" class="contact-icon">
+                        <span>+1 (212) 555-0187</span>
+                    </li>
+                    <li>
+                        <img src="img/icons/mail.svg" alt="email" class="contact-icon">
+                        <span>support@example.com</span>
+                    </li>
+                </ul>
+
+                <div class="social-links">
+                    <a href="#" class="social-btn"><img src="img/icons/facebook.svg" alt="facebook"></a>
+                    <a href="#" class="social-btn"><img src="img/icons/instagram.svg" alt="instagram"></a>
+                    <a href="#" class="social-btn"><img src="img/icons/twitter.svg" alt="twitter"></a>
+                    <a href="#" class="social-btn"><img src="img/icons/whatsapp.svg" alt="whatsapp"></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="col-title">Account</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Login / Register</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="wishlist.html">Wishlist</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="col-title">Quick Link</h3>
+                <ul class="footer-links">
+                    <li><a href="privacypolicy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Refund Policy</a></li>
+                    <li><a href="terms.html">Terms of Use</a></li>
+                    <li><a href="#">FAQ's</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="col-title">Download App</h3>
+                <p class="app-desc">Get started in seconds – it's fast, free, and easy!</p>
+
+                <div class="app-buttons">
+                    <a href="#" class="app-btn">
+                        <img src="img/icons/apple.svg" alt="App Store" class="app-icon">
+                        <div>
+                            <small>Download on the</small>
+                            <strong>App Store</strong>
+                        </div>
+                    </a>
+
+                    <a href="#" class="app-btn">
+                        <img src="img/icons/google-play.svg" alt="Google Play" class="app-icon">
+                        <div>
+                            <small>Get it On</small>
+                            <strong>Google Play</strong>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>© 2026. All rights reserved</p>
+                <div class="payment-methods">
+                    <span>We Accept:</span>
+                    <img src="img/icons/visa.svg" alt="visa">
+                    <img src="img/icons/paypal.svg" alt="paypal">
+                    <img src="img/icons/mastercard.svg" alt="mastercard">
+                    <img src="img/icons/apple-pay.svg" alt="apple pay">
+                    <img src="img/icons/google-pay.svg" alt="google pay">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="cart-modal" class="cart-modal-overlay">
+        <div class="cart-modal-content">
+            <div class="cart-header">
+                <h2>Cart View</h2>
+                <button id="close-cart-btn" class="close-btn">&times;</button>
+            </div>
+            
+            <ul id="cart-items-list" class="cart-items-list">
+            </ul>
+            
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Subtotal:</span>
+                    <strong id="cart-total-price">$0</strong>
+                </div>
+                <div class="cart-actions-btns">
+                    <a href="cart.html" class="btn-view-cart">View Cart</a>
+                    <a href="checkout.html" class="btn-checkout">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div> 
+</body>
+</html>
